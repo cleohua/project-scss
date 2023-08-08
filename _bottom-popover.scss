@@ -1,0 +1,104 @@
+@use "../mixins";
+
+#bottom-popover-bg {
+  pointer-events: none;
+  user-select: none;
+  z-index: 100;
+
+  &.gray-bg {
+    background: #262626ab;
+    backdrop-filter: blur(2px);
+    pointer-events: all;
+  }
+
+  .bottom-popover-area {
+    position: absolute;
+    right: 30px;
+    bottom: 35px;
+    font-family: "Noto Sans TC", sans-serif;
+    pointer-events: all;
+    transition: all 0.2s linear;
+    opacity: 1;
+
+    &.main-enter,
+    &.main-leave-to {
+      opacity: 0;
+    }
+
+    > div {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .plus-icon {
+      z-index: 9;
+      line-height: 50px;
+      font-size: 45px;
+      text-align: center;
+      color: black;
+      background: mixins.$sys-yellow;
+      border: 1px solid mixins.$sys-yellow;
+      cursor: pointer;
+
+      &.active {
+        transform-origin: center;
+        transform: rotate(45deg);
+        background: transparent;
+        color: mixins.$sys-yellow;
+      }
+    }
+
+    .camera-icon {
+      z-index: -1;
+      background: mixins.$sys-yellow;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: all 0.2s ease-out;
+
+      &::after {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        content: "\f030";
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        font-size: 28px;
+        line-height: 60px;
+        text-align: center;
+        color: black;
+      }
+
+      &.active {
+        opacity: 1;
+        transform: translate(-26.8px, -100px);
+      }
+    }
+
+    .upload-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: mixins.$sys-yellow;
+      opacity: 0;
+      transition: all 0.2s ease-out;
+      background-image: url(../images/safety-inspect/upload-icon.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 45%;
+
+      &.active {
+        opacity: 1;
+        transform: translate(-100px, -26.8px);
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@use "sass:map";
+// vue select dark style
+$vs-colors: (
+    lightest: rgba(172, 172, 172, 0.5),
+    light: rgba(255, 255, 255, 0.7),
+    dark: rgba(255, 255, 255, 0.9),
+    darkest: rgba(56, 56, 56, 0.15),
+);
+
+@use "../vue-select/global/_variables" with (
+    $vs-colors: (
+        lightest: rgba(172, 172, 172, 0.5),
+        light: rgba(255, 255, 255, 0.7),
+        dark: rgba(255, 255, 255, 0.9),
+        darkest: rgba(56, 56, 56, 0.15),
+    ),
+    //  Global Component Variables
+    $vs-component-placeholder-color: rgb(255, 255, 255),
+
+    //  Active State
+    $vs-state-active-bg: rgb(66, 66, 66),
+    $vs-state-active-color: #ecce2a,
+
+    //  Disabled State
+    $vs-state-disabled-color: map.get($vs-colors, "lightest"),
+    $vs-state-disabled-controls-color: map.get($vs-colors, "lightest"),
+
+    //  Borders
+    $vs-border-width: 0px,
+
+    //  Component Controls: Clear, Open Indicator
+    $vs-controls-color: white,
+    $vs-controls-deselect-text-shadow: 0 1px 0 #fff,
+
+    //  Selected
+    $vs-selected-bg: #ffffff,
+
+    //  Dropdown
+    $vs-dropdown-box-shadow: 0px 3px 6px 0px map.get($vs-colors, "darkest"),
+    $vs-dropdown-bg: rgb(32, 32, 32),
+);
+
+@use "../vue-select/global/_component";
+@use "../vue-select/global/_animations";
+@use "../vue-select/global/_states";
+
+@use "../vue-select/modules/_dropdown-toggle";
+@use "../vue-select/modules/_open-indicator";
+@use "../vue-select/modules/_clear";
+@use "../vue-select/modules/_dropdown-menu";
+@use "../vue-select/modules/_dropdown-option";
+@use "../vue-select/modules/_selected";
+@use "../vue-select/modules/_search-input";
+@use "../vue-select/modules/_spinner";
